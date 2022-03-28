@@ -3,6 +3,7 @@ import Topo from "../../components/Header";
 import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 // import Pikachu from "../../Pokemon/Pikachu";
+import { useNavigate } from 'react-router-dom'
 
 import { 
     Container, 
@@ -26,6 +27,9 @@ import {
 
 
 const Home = () => {
+
+    const navigate = useNavigate()
+
     const [texto, setTexto] = useState('')
     const [color, setColor] = useState('')
   
@@ -44,6 +48,7 @@ const Home = () => {
                 imageUrl='https://i.ibb.co/pr7FrLL/pikachu-img.jpg'
                 name='Pikachu'
                 type='Elétrico'
+                onClickAction={() => navigate('pokemon')}
             />
 
             <Card

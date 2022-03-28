@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Topo from "../../components/Header";
-import Footer from "../../components/Footer";
-import { Container, Logo, Topo, Navbar, Navlist, Listnum, Search, Input, Button, Card, Row, Image, Name, Type, Link, Footer, Text, View} from './styles';
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import { Container, Logo, Navbar, Navlist, Listnum, Search, Input, Button, Card, Row, Image, Name, Type, Link, Text, View} from '../../Home/styles';
 
-const Pikachu = () => {
+const Charmander = () => {
     const [texto, setTexto] = useState('')
     const [color, setColor] = useState('')
   
@@ -11,7 +11,7 @@ const Pikachu = () => {
 
     <Container>
 
-      <Topo
+      <Header
       />
 
       <Row>
@@ -31,4 +31,4 @@ const Pikachu = () => {
     );
 }
 
-export default Pikachu
+export default Charmander

@@ -79,7 +79,7 @@ export const Input = styled.input`
   font-size: 30px;
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;

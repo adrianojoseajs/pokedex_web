@@ -8,14 +8,14 @@ import {
     Button
 } from "../../pages/Home/styles";
 
-const Card = ({imageUrl, name, type }) => {
+const Card = ({imageUrl, name, type, onClickAction }) => {
     return(
         <Cards>
                 {/* href="../pages/Pokemon/Pikachu/index.js" */}
                 <Image src={imageUrl}/>
                 <Name>{name}</Name>
                 <Type>{type}</Type>
-                <Button title="Go" onPress={() => navigation.push('Details')}>Mais</Button>
+                <Button title="Go" onClick={onClickAction}>Mais</Button>
         </Cards>
     )
 }

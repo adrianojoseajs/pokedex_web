@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Topo from "../../components/Header";
-import Footer from "../../components/Footer";
-import { Container, Logo, Topo, Navbar, Navlist, Listnum, Search, Input, Button, Card, Row, Image, Name, Type, Link, Footer, Text, View} from './styles';
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import { Container, Logo, Navbar, Navlist, Listnum, Search, Input, Button, Row, Image, Name, Type, Link, Text, View} from '../../Home/styles';
+import Card from "../../../components/Card";
 
 const Pikachu = () => {
     const [texto, setTexto] = useState('')
@@ -11,7 +12,7 @@ const Pikachu = () => {
 
     <Container>
 
-      <Topo
+      <Header
       />
 
       <Row>
