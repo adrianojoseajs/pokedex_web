@@ -1,18 +1,21 @@
-import React, { useState } from "react";
-import Topo from "../../components/Header";
+import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 // import Pikachu from "../../Pokemon/Pikachu";
+import { useNavigate } from 'react-router-dom'
 
 import { 
     Container, 
     Logo, 
+    Divbtn,
+    Imagemlupa,
     Navbar, 
     Navlist, 
     Listnum, 
     Search, 
     Input, 
-    Button, 
+    Buttonsearch, 
+    Buttonmais,
     Cards, 
     Row, 
     Image, 
@@ -21,79 +24,65 @@ import {
     Text,
     View,
     A,
+    Topo,
 } from './styles';
+import axios from "axios";
 
 
 
 const Home = () => {
-    const [texto, setTexto] = useState('')
-    const [color, setColor] = useState('')
+
+    const navigate = useNavigate()
+
+    const [text, setText] = useState('')
+    const [listaPokemon, setListaPokemon] = useState([])
+    const [types, setTypes] = useState('')
+
+    const api = axios.create({
+        baseURL: 'https://pokeapi.co/api/v2/pokemon/'
+    })
+
+    useEffect(() => {
+        const handleStart = async () => {
+            const {data: {results}} = await api.get('')
+            setListaPokemon(results)
+            const fn = (lista) => {
+                const promessas = lista.map( async ({name}) => {
+                    const {data} = await api.get(name)
+                    return data.types
+                })
+                return Promise.all(promessas)
+            }
+            const a = fn(results) 
+            console.log(a)
+        }
+        handleStart()
+    }, [])
   
     return (
 
       <Container>
-        <Topo
-        />
+      <Topo>
+        <Logo src="https://i.ibb.co/Bfscpgw/pokemon-logo.png"/>
+            <Search>
+                <Input value={text} onChange={({currentTarget: {value}}) => setText(value)}/>
+                    <Divbtn>
+                        <Buttonsearch onClick={() => null}>Buscar</Buttonsearch>
+                    </Divbtn>
+            </Search>
+      </Topo>
 
         <View
         />
 
-          <Row>
-
-            <Card
-                imageUrl='https://i.ibb.co/pr7FrLL/pikachu-img.jpg'
-                name='Pikachu'
-                type='Elétrico'
-            />
-
-            <Card
-                imageUrl='https://i.ibb.co/xsFqqj5/charmander-img.jpg'
-                name='Charmander'
-                type='Fogo'
-            />
-  
-            <Card
-                imageUrl='https://i.ibb.co/1LTLZ5T/poliwrath-img.jpg'
-                name='Poliwrath'
-                type='Água'
-            />
-
-            <Card
-                imageUrl='https://i.ibb.co/93NK2j9/Voltorb-img.jpg'
-                name='Voltorb'
-                type='Eletrico'
-            />
-
-            <Card
-                imageUrl='https://i.ibb.co/Qmt31D2/ditto-img.jpg'
-                name='Ditto'
-                type='Normal'
-            />
-
-            <Card
-                imageUrl='https://i.ibb.co/6XMxHpd/mewtwo-img.jpg'
-                name='Mewthow'
-                type='Pisíquico'
-            />
-
-            <Card
-                imageUrl='https://i.ibb.co/SJG7fWS/seel-img.jpg'
-                name='Seel'
-                type='Água'
-            />
-
-            <Card
-                imageUrl='https://i.ibb.co/zNSjTkb/totodile-img.jpg'
-                name='Totodile'
-                type='Água'
-            />
-
-            <Card
-                imageUrl='https://i.ibb.co/tZQYbB3/bayleef-img.jpg'
-                name='Bayleef'
-                type='Selva'
-            />
-  
+            <Row>
+                {listaPokemon.map(({name}) => {
+                    return (
+                        <Card
+                            name={name}
+                        />
+                    )
+                })}
             </Row>
 
         <Footer

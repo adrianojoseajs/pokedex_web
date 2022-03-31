@@ -1,26 +1,21 @@
-import React, { useState } from "react";
-import {
-  Topo, 
-  Logo, 
-  Search, 
-  Input, 
-  Button, 
-  navigation
-} from "../../pages/Home/styles";
+// import React, { useState } from "react";
+// import {
+//   Topo, 
+//   Logo, 
+//   Search, 
+//   Input, 
+//   Button, 
+//   navigation
+// } from "../../pages/Home/styles";
 
-const Header = () => {
-  const [texto, setTexto] = useState('')
+// const Header = ({onClickAction}) => {
   
-    return(
-        <Topo>
-          <Logo src="https://i.ibb.co/Bfscpgw/pokemon-logo.png"/>
-            <Search>
-              <Input/>
-                <Button>Buscar</Button>
-                {/* onPress={() => navigation.push('index.js')} */}
-            </Search>
-        </Topo>
-    )
-}
+//     return(
+//     )
+// }
 
-export default Header
+// export default Header
+
+// Estou comentando este componente pois ele já aparece no Home, 
+// então se ele não ficar comentado aqui surge um erro na tela, 
+// já que este componente já está no home!
