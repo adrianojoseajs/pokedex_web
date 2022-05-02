@@ -17,7 +17,8 @@ const Pikachu = () => {
 
         <Row>
               <Body
-                  imgpoke='https://i.ibb.co/pr7FrLL/pikachu-img.jpg'
+
+                  export default Pikachu imgpoke='https://i.ibb.co/pr7FrLL/pikachu-img.jpg'
                   name='Pikachu'
                   type='Elétrico'
                   height='1.1cm'

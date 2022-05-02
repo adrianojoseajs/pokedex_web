@@ -1,9 +1,6 @@
 import React from "react";
 import {
     Rodape, 
-    View, 
-    Button, 
-    Text
 } from "./styles";
 
 const Footer = () => {

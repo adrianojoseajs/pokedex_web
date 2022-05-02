@@ -4,22 +4,22 @@ import Footer from "../../components/Footer";
 // import Pikachu from "../../Pokemon/Pikachu";
 import { useNavigate } from 'react-router-dom'
 
-import { 
-    Container, 
-    Logo, 
+import {
+    Container,
+    Logo,
     Divbtn,
     Imagemlupa,
-    Navbar, 
-    Navlist, 
-    Listnum, 
-    Search, 
-    Input, 
-    Buttonsearch, 
+    Navbar,
+    Navlist,
+    Listnum,
+    Search,
+    Input,
+    Buttonsearch,
     Buttonmais,
-    Cards, 
-    Row, 
-    Image, 
-    Name, 
+    Cards,
+    Row,
+    Image,
+    Name,
     Type,
     Text,
     View,
@@ -44,39 +44,39 @@ const Home = () => {
 
     useEffect(() => {
         const handleStart = async () => {
-            const {data: {results}} = await api.get('')
+            const { data: { results } } = await api.get('')
             setListaPokemon(results)
             const fn = (lista) => {
-                const promessas = lista.map( async ({name}) => {
-                    const {data} = await api.get(name)
+                const promessas = lista.map(async ({ name }) => {
+                    const { data } = await api.get(name)
                     return data.types
                 })
                 return Promise.all(promessas)
             }
-            const a = fn(results) 
+            const a = fn(results)
             console.log(a)
         }
         handleStart()
     }, [])
-  
+
     return (
 
-      <Container>
-      <Topo>
-        <Logo src="https://i.ibb.co/Bfscpgw/pokemon-logo.png"/>
-            <Search>
-                <Input value={text} onChange={({currentTarget: {value}}) => setText(value)}/>
+        <Container>
+            <Topo>
+                <Logo src="https://i.ibb.co/Bfscpgw/pokemon-logo.png" />
+                <Search>
+                    <Input value={text} onChange={({ currentTarget: { value } }) => setText(value)} />
                     <Divbtn>
                         <Buttonsearch onClick={() => null}>Buscar</Buttonsearch>
                     </Divbtn>
-            </Search>
-      </Topo>
+                </Search>
+            </Topo>
 
-        <View
-        />
+            <View
+            />
 
             <Row>
-                {listaPokemon.map(({name}) => {
+                {listaPokemon.map(({ name }) => {
                     return (
                         <Card
                             name={name}
@@ -85,11 +85,11 @@ const Home = () => {
                 })}
             </Row>
 
-        <Footer
-            
-        />
+            <Footer
 
-      </Container>
+            />
+
+        </Container>
     );
 }
 
